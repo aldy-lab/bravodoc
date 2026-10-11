@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BravoDoc — AI document validator for engineering projects</title>
+<meta name="description" content="BravoDoc reads engineering documents, compares them and flags missing references, outdated revisions and conflicting values in seconds. Try it on your own files — they never leave your browser.">
+<meta name="theme-color" content="#06080b">
+<link rel="canonical" href="https://aldy-lab.github.io/bravodoc/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="BravoDoc — AI document validator">
+<meta property="og:description" content="Finds missing references, outdated revisions and conflicting values across engineering documents. Smart validation. Confident compliance.">
+<meta property="og:url" content="https://aldy-lab.github.io/bravodoc/">
+<meta property="og:image" content="https://aldy-lab.github.io/bravodoc/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"BravoDoc","applicationCategory":"BusinessApplication","operatingSystem":"Web","description":"AI document validator for engineering projects: checks references, revisions, standards, quantities and design values across a document package.","url":"https://aldy-lab.github.io/bravodoc/","publisher":{"@type":"Organization","name":"Bravo Integrated Solutions"}}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="hdr" data-hdr>
+  <div class="hdr-in wrap">
+    <a class="brand" href="#top" aria-label="BravoDoc, back to top">
+      <svg class="brand-mark" viewBox="0 0 360 338.58" aria-hidden="true"><use href="#emblem"/></svg>
+      <span class="brand-name">BravoDoc</span>
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#problem">Problem</a>
+      <a href="#demo">Live demo</a>
+      <a href="#how">How it works</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#partner">Partner</a>
+    </nav>
+    <a class="btn btn-s" href="#contact">Request a pilot</a>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="wrap hero-in">
+    <div class="hero-copy">
+      <p class="eyebrow reveal"><span class="tag">AI document validator</span><span class="by">by Bravo Integrated Solutions</span></p>
+      <h1 class="h-hero reveal">Find the mistakes in engineering documents <em>before they reach site.</em></h1>
+      <p class="lede reveal">BravoDoc reads your Design Basis, specifications and drawings, compares them, and flags missing references, outdated revisions and conflicting values — in seconds, not weeks.</p>
+      <div class="cta-row reveal">
+        <a class="btn" href="#demo">Check your documents <span aria-hidden="true">→</span></a>
+        <a class="btn btn-ghost" href="#contact">Request a pilot</a>
+      </div>
+      <ul class="checks reveal" aria-label="What it checks">
+        <li>References</li><li>Revisions</li><li>Standards</li><li>Quantities</li><li>Design values</li>
+      </ul>
+    </div>
+
+    <figure class="sheets" aria-label="Three documents being compared: the validator finds an outdated revision, a quantity mismatch and a conflicting rating" data-sheets>
+      <svg viewBox="0 0 640 560" role="img" aria-hidden="true">
+        <defs>
+          <linearGradient id="beam" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="var(--accent)" stop-opacity="0"/>
+            <stop offset=".85" stop-color="var(--accent)" stop-opacity=".16"/>
+            <stop offset="1" stop-color="var(--accent)" stop-opacity=".9"/>
+          </linearGradient>
+          <clipPath id="sheetsClip"><rect x="0" y="0" width="640" height="560"/></clipPath>
+        </defs>
+
+        <!-- Sheet A: Design Basis -->
+        <g class="sheet" transform="translate(16 40)">
+          <rect class="paper" width="190" height="260" rx="3"/>
+          <text class="s-id" x="14" y="24">DB-EL-001</text><text class="s-rev" x="176" y="24" text-anchor="end">REV 3</text>
+          <line class="rule" x1="14" y1="34" x2="176" y2="34"/>
+          <text class="s-t" x="14" y="52">Design Basis</text>
+          <g class="bars"><rect x="14" y="66" width="150" height="4"/><rect x="14" y="76" width="120" height="4"/><rect x="14" y="86" width="140" height="4"/></g>
+          <g class="row" data-row="v1"><text class="s-k" x="14" y="114">Nominal voltage</text><text class="s-v" x="176" y="114" text-anchor="end">20 kV</text></g>
+          <g class="row" data-row="sc1"><text class="s-k" x="14" y="134">Short-circuit</text><text class="s-v" x="176" y="134" text-anchor="end">25 kA</text></g>
+          <g class="row"><text class="s-k" x="14" y="154">Frequency</text><text class="s-v" x="176" y="154" text-anchor="end">50 Hz</text></g>
+          <g class="bars"><rect x="14" y="176" width="150" height="4"/><rect x="14" y="186" width="96" height="4"/><rect x="14" y="196" width="130" height="4"/><rect x="14" y="206" width="110" height="4"/></g>
+          <rect class="tblock" x="110" y="226" width="66" height="22"/>
+        </g>
+
+        <!-- Sheet B: Specification -->
+        <g class="sheet" transform="translate(226 110)">
+          <rect class="paper" width="190" height="260" rx="3"/>
+          <text class="s-id" x="14" y="24">SPEC-EL-012</text><text class="s-rev" x="176" y="24" text-anchor="end">REV 2</text>
+          <line class="rule" x1="14" y1="34" x2="176" y2="34"/>
+          <text class="s-t" x="14" y="52">Specification</text>
+          <g class="row" data-row="ref"><text class="s-k" x="14" y="76">Inputs: DB-EL-001</text><text class="s-v" x="176" y="76" text-anchor="end">Rev 2</text></g>
+          <g class="bars"><rect x="14" y="90" width="150" height="4"/><rect x="14" y="100" width="128" height="4"/></g>
+          <g class="row"><text class="s-k" x="14" y="128">Nominal voltage</text><text class="s-v" x="176" y="128" text-anchor="end">20 kV</text></g>
+          <g class="row" data-row="sc2"><text class="s-k" x="14" y="148">Short-circuit</text><text class="s-v" x="176" y="148" text-anchor="end">31.5 kA</text></g>
+          <g class="row" data-row="cb1"><text class="s-k" x="14" y="176">Circuit breakers</text><text class="s-v" x="176" y="176" text-anchor="end">20</text></g>
+          <g class="row"><text class="s-k" x="14" y="196">Current transf.</text><text class="s-v" x="176" y="196" text-anchor="end">4</text></g>
+          <rect class="tblock" x="110" y="226" width="66" height="22"/>
+        </g>
+
+        <!-- Sheet C: Drawing -->
+        <g class="sheet" transform="translate(436 180)">
+          <rect class="paper" width="190" height="260" rx="3"/>
+          <text class="s-id" x="14" y="24">DWG-EL-104</text><text class="s-rev" x="176" y="24" text-anchor="end">REV 1</text>
+          <line class="rule" x1="14" y1="34" x2="176" y2="34"/>
+          <text class="s-t" x="14" y="52">Single-line</text>
+          <g class="sld">
+            <line x1="40" y1="70" x2="150" y2="70"/>
+            <line x1="56" y1="70" x2="56" y2="104"/><line x1="82" y1="70" x2="82" y2="104"/><line x1="108" y1="70" x2="108" y2="104"/><line x1="134" y1="70" x2="134" y2="104"/>
+            <rect x="51" y="80" width="10" height="10"/><rect x="77" y="80" width="10" height="10"/><rect x="103" y="80" width="10" height="10"/><rect x="129" y="80" width="10" height="10"/>
+            <circle cx="56" cy="110" r="4"/><circle cx="82" cy="110" r="4"/><circle cx="108" cy="110" r="4"/><circle cx="134" cy="110" r="4"/>
+          </g>
+          <g class="row" data-row="cb2"><text class="s-k" x="14" y="146">Circuit breakers</text><text class="s-v" x="176" y="146" text-anchor="end">19</text></g>
+          <g class="row"><text class="s-k" x="14" y="166">Current transf.</text><text class="s-v" x="176" y="166" text-anchor="end">4</text></g>
+          <g class="bars"><rect x="14" y="186" width="140" height="4"/><rect x="14" y="196" width="100" height="4"/></g>
+          <rect class="tblock" x="110" y="226" width="66" height="22"/>
+        </g>
+
+        <!-- Links drawn between the rows that disagree -->
+        <g class="links">
+          <path class="link" data-link="ref" d="M 240 186 C 200 186, 218 64, 192 64"/>
+          <path class="link" data-link="sc" d="M 192 174 C 220 174, 214 258, 240 258"/>
+          <path class="link" data-link="cb" d="M 402 286 C 440 286, 420 326, 450 326"/>
+        </g>
+
+        <!-- Flags -->
+        <g class="flag" data-flag="ref" transform="translate(120 4)"><rect width="168" height="26" rx="13"/><circle cx="14" cy="13" r="4"/><text x="26" y="17">Outdated: Rev 2 → Rev 3</text></g>
+        <g class="flag" data-flag="sc" transform="translate(30 330)"><rect width="150" height="26" rx="13"/><circle cx="14" cy="13" r="4"/><text x="26" y="17">25 kA ≠ 31.5 kA</text></g>
+        <g class="flag" data-flag="cb" transform="translate(424 466)"><rect width="140" height="26" rx="13"/><circle cx="14" cy="13" r="4"/><text x="26" y="17">20 ≠ 19 breakers</text></g>
+
+        <!-- Scan beam -->
+        <g clip-path="url(#sheetsClip)"><rect class="beam" x="0" y="-80" width="640" height="80" fill="url(#beam)"/></g>
+
+        <!-- Corner ticks -->
+        <g class="ticks"><path d="M2 14V2h12M626 2h12v12M638 546v12h-12M14 558H2v-12"/></g>
+      </svg>
+      <figcaption class="sheets-cap"><span data-cap>Reading 3 documents…</span><span class="mono" data-cap-n>0 / 3 issues</span></figcaption>
+    </figure>
+  </div>
+  <a class="scroll-cue" href="#problem" aria-label="Scroll to the problem"><span></span></a>
+</section>
+
+<!-- PROBLEM -->
+<section class="sec" id="problem">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="label reveal">01 — The problem</p>
+      <h2 class="h2 reveal">Manual checks waste time and <span class="err-word">cause errors.</span></h2>
+      <p class="sub reveal">Engineering teams work with thousands of files — Design Bases, specifications, drawings, standards. Checking them by hand is slow and inconsistent, and what slips through comes back as rework, compliance risk and lost time.</p>
+    </div>
+    <div class="cards3">
+      <article class="card reveal">
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></svg>
+        <h3>Thousands of files</h3>
+        <p>A single package runs to hundreds of documents, each citing others by number and revision.</p>
+        <span class="card-n">1,000s</span>
+      </article>
+      <article class="card reveal">
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <h3>Slow manual checks</h3>
+        <p>Engineers read line by line to confirm that a value, a count or a revision matches everywhere it appears.</p>
+        <span class="card-n">weeks</span>
+      </article>
+      <article class="card reveal">
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17v.5"/></svg>
+        <h3>Rework and compliance risk</h3>
+        <p>An outdated revision or a mismatched rating found on site costs far more than one found on paper.</p>
+        <span class="card-n">on site</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IT DOES -->
+<section class="sec sec-tight" id="what">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="label reveal">02 — The answer</p>
+      <h2 class="h2 reveal">AI that understands <span class="grad">engineering documents.</span></h2>
+    </div>
+    <ol class="flow">
+      <li class="flow-step reveal"><span class="flow-k">Reads</span><p>BravoDoc reads and checks documents using language models and OCR.</p></li>
+      <li class="flow-arrow reveal" aria-hidden="true"><svg viewBox="0 0 80 12"><path d="M0 6h76M70 1l6 5-6 5"/></svg></li>
+      <li class="flow-step reveal"><span class="flow-k">Detects</span><p>It finds missing data, wrong values and outdated standards.</p></li>
+      <li class="flow-arrow reveal" aria-hidden="true"><svg viewBox="0 0 80 12"><path d="M0 6h76M70 1l6 5-6 5"/></svg></li>
+      <li class="flow-step reveal"><span class="flow-k">Reports</span><p>It produces a clear report showing what needs attention, and where.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- DEMO -->
+<section class="sec demo-sec" id="demo">
+  <div class="wrap">
+    <div class="sec-head sec-head-row">
+      <div>
+        <p class="label reveal">03 — Live demo</p>
+        <h2 class="h2 reveal">Try it on your documents.</h2>
+      </div>
+      <p class="sub reveal">Drop a few PDFs or Word files from one project. The checks run in your browser — <strong>nothing is uploaded</strong>. No documents at hand? Run the sample package.</p>
+    </div>
+
+    <div class="demo reveal" data-demo>
+      <div class="demo-in">
+        <div class="drop" data-drop tabindex="0" role="button" aria-label="Choose documents to check">
+          <input type="file" data-file multiple accept=".pdf,.docx,.txt,.md,.csv" hidden>
+          <svg class="drop-ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M14 6h14l8 8v28H14z"/><path d="M28 6v8h8"/><path d="M25 34V22M20 27l5-5 5 5"/></svg>
+          <p class="drop-t">Drop documents here</p>
+          <p class="drop-s">PDF, Word (.docx) or text · up to 20 files · 20 MB each</p>
+          <div class="drop-btns">
+            <button class="btn btn-s" type="button" data-pick>Choose files</button>
+            <button class="btn btn-s btn-ghost" type="button" data-sample>Run the sample package</button>
+          </div>
+        </div>
+
+        <ul class="files" data-files aria-live="polite"></ul>
+
+        <p class="demo-note">This demo runs BravoDoc’s cross-check rules on text it can read. Scans and CAD files need the OCR layer, which is part of the pilot.</p>
+      </div>
+
+      <div class="report" data-report aria-live="polite">
+        <div class="report-empty" data-empty>
+          <div class="ph-lines" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+          <p>The report appears here.</p>
+        </div>
+        <div class="report-busy" data-busy hidden>
+          <div class="busy-bar"><i></i></div>
+          <p class="mono" data-busy-t>Reading…</p>
+        </div>
+        <div class="report-out" data-out hidden>
+          <div class="report-top">
+            <p class="label">Validation report</p>
+            <button class="btn btn-s btn-ghost" type="button" data-download>Download .txt</button>
+          </div>
+          <dl class="stats">
+            <div><dt>Documents</dt><dd data-stat="documents">0</dd></div>
+            <div><dt>References</dt><dd data-stat="references">0</dd></div>
+            <div class="st-err"><dt>Errors</dt><dd data-stat="errors">0</dd></div>
+            <div class="st-warn"><dt>Warnings</dt><dd data-stat="warnings">0</dd></div>
+          </dl>
+          <ul class="doclist" data-doclist></ul>
+          <ol class="findings" data-findings></ol>
+          <p class="report-foot mono" data-foot></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="sec" id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="label reveal">04 — How it works</p>
+      <h2 class="h2 reveal">Four steps, from a folder of files to a <span class="grad">validation report.</span></h2>
+    </div>
+    <ol class="steps" data-steps>
+      <li class="step"><span class="step-n">01</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5M4 16v4h16v-4"/></svg><h3>Upload your documents</h3><p>PDF and Word today; drawings and scans with OCR in the pilot.</p></li>
+      <li class="step"><span class="step-n">02</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h10M4 17h7"/><circle cx="17" cy="16" r="3"/><path d="M19.5 18.5L22 21"/></svg><h3>AI scans and compares data</h3><p>Document numbers, revisions, standards, quantities and design values are extracted and matched.</p></li>
+      <li class="step"><span class="step-n">03</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 21V4h11l-2 4 2 4H5"/></svg><h3>Flags problems and inconsistencies</h3><p>Every finding points to the document, the page and the line.</p></li>
+      <li class="step"><span class="step-n">04</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18H6z"/><path d="M9 8h6M9 12h6M9 16l1.5 1.5L14 14"/></svg><h3>Creates a validation report</h3><p>A report the team can work through, share and keep with the package.</p></li>
+      <li class="steps-line" aria-hidden="true"><i data-steps-fill></i></li>
+    </ol>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section class="sec sec-panel" id="capabilities">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="label reveal">05 — The product</p>
+      <h2 class="h2 reveal">Working prototype, <span class="hl">ready to grow.</span></h2>
+    </div>
+    <div class="cap-grid">
+      <div class="cap-col">
+        <p class="cap-h reveal"><i class="dot dot-on"></i>Working now</p>
+        <ul class="caps">
+          <li class="reveal"><h3>Reads PDFs and Word files</h3><p>Text, tables and title blocks from the formats a package actually ships in.</p></li>
+          <li class="reveal"><h3>Extracts text and technical data</h3><p>Document numbers, revisions, standards with editions, quantities and rated values.</p></li>
+          <li class="reveal"><h3>Detects missing or conflicting references</h3><p>Every cited document is matched against the set and its current revision.</p></li>
+          <li class="reveal"><h3>Shows results in a simple web dashboard</h3><p>Findings sorted by severity, each with its source line.</p></li>
+        </ul>
+      </div>
+      <div class="cap-col">
+        <p class="cap-h reveal"><i class="dot"></i>In development</p>
+        <ul class="caps caps-soon">
+          <li class="reveal"><h3>Layout check</h3><p>Verify that drawing layouts follow the client’s standards and specifications.</p></li>
+          <li class="reveal"><h3>Revision tracking</h3><p>Track what changed between document revisions — Rev 1 → Rev 2 — automatically.</p></li>
+          <li class="reveal"><h3>Consistency verification on drawings</h3><p>Count components on the drawing itself and match them to the list: 20 switches in the list, 20 on the drawing.</p></li>
+          <li class="reveal"><h3>OCR for drawings and scans</h3><p>DWG, DXF and scanned PDFs read as text, so nothing in the package is skipped.</p></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STACK -->
+<section class="sec sec-tight" id="stack">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="label reveal">06 — Under the hood</p>
+      <h2 class="h2 reveal">Built on modern, scalable tools.</h2>
+    </div>
+    <div class="cards4">
+      <article class="tile reveal"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M5 19l3-3M16 8l3-3"/></svg><h3>AI models for technical language</h3></article>
+      <article class="tile reveal"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8V4h4M17 4h4v4M21 16v4h-4M7 20H3v-4"/><path d="M7 12h10"/></svg><h3>OCR for drawings and scanned files</h3></article>
+      <article class="tile reveal"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6l-6 6 6 6M16 6l6 6-6 6"/></svg><h3>Python backend, React dashboard</h3></article>
+      <article class="tile reveal"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18h10a4 4 0 0 0 .5-8A6 6 0 0 0 6 9a4.5 4.5 0 0 0 1 9z"/></svg><h3>Cloud-ready for AWS or Azure</h3></article>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section class="sec" id="roadmap">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="label reveal">07 — Roadmap</p>
+      <h2 class="h2 reveal">From prototype to <span class="grad">full product.</span></h2>
+    </div>
+    <ol class="road" data-road>
+      <li class="road-line" aria-hidden="true"><i></i></li>
+      <li class="road-item is-now reveal"><span class="road-k">01 · Now</span><h3>Working prototype</h3><p>The AI validation core: reading, extraction and cross-reference checks.</p></li>
+      <li class="road-item reveal"><span class="road-k">02 · Next</span><h3>Cross-document checks and custom rules</h3><p>Your standards and your limits, written as rules the validator applies.</p></li>
+      <li class="road-item reveal"><span class="road-k">03 · Future</span><h3>Full SaaS platform</h3><p>Integrations with your document system, and models that learn from your projects.</p></li>
+    </ol>
+
+    <div class="ahead">
+      <p class="ahead-h reveal">Smarter validation ahead</p>
+      <ul class="ahead-list">
+        <li class="reveal"><span class="mono">A</span>Cross-checks between Design Basis, philosophies and specifications</li>
+        <li class="reveal"><span class="mono">B</span>Data consistency checks in text, tables and drawings</li>
+        <li class="reveal"><span class="mono">C</span>A standards matrix with version tracking</li>
+        <li class="reveal"><span class="mono">D</span>A machine-readable Design Basis with unified limits and safety margins</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNER -->
+<section class="sec sec-panel" id="partner">
+  <div class="wrap">
+    <div class="sec-head sec-head-row">
+      <div>
+        <p class="label reveal">08 — Partnership</p>
+        <h2 class="h2 reveal">Let’s develop BravoDoc together.</h2>
+      </div>
+      <p class="sub reveal">We are looking for an engineering partner to take BravoDoc into production — on your documents, against your standards.</p>
+    </div>
+    <ul class="benefits">
+      <li class="reveal"><i class="tick" aria-hidden="true"></i><h3>Early access</h3><p>to the technology, before it is offered to anyone else.</p></li>
+      <li class="reveal"><i class="tick" aria-hidden="true"></i><h3>A version tailored</h3><p>to your documents, numbering and standards.</p></li>
+      <li class="reveal"><i class="tick" aria-hidden="true"></i><h3>Shared IP or exclusive use</h3><p>— the model of cooperation is open.</p></li>
+      <li class="reveal"><i class="tick" aria-hidden="true"></i><h3>Time and cost savings</h3><p>on every package your engineers no longer check line by line.</p></li>
+    </ul>
+
+    <ol class="collab">
+      <li class="reveal"><span class="collab-n">Step 1</span><p>Improve the prototype — add cross-document validation.</p></li>
+      <li class="reveal"><span class="collab-n">Step 2</span><p>Pilot on your real data.</p></li>
+      <li class="reveal"><span class="collab-n">Step 3</span><p>Build the enterprise version for wider rollout.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec contact" id="contact">
+  <div class="wrap contact-in">
+    <div class="contact-copy">
+      <p class="label reveal">09 — Next step</p>
+      <h2 class="h2 reveal">Join us in building the future of <span class="grad">document intelligence.</span></h2>
+      <p class="sub reveal">BravoDoc is ready for the next stage. Tell us about your documents and we will propose a pilot or a co-development plan.</p>
+      <div class="person reveal" data-contact-block>
+        <p class="person-name" data-cfg="contactName"></p>
+        <a class="person-l" data-cfg="email" data-subject="BravoDoc pilot"></a>
+        <a class="person-l" data-cfg="phone"></a>
+      </div>
+    </div>
+
+    <form class="form reveal" data-form novalidate>
+      <div class="f-row">
+        <label class="f"><span>Name</span><input name="name" autocomplete="name" required></label>
+        <label class="f"><span>Company</span><input name="company" autocomplete="organization" required></label>
+      </div>
+      <label class="f"><span>Work email</span><input name="email" type="email" autocomplete="email" required></label>
+      <fieldset class="f f-chips">
+        <legend>Documents you would check</legend>
+        <label><input type="checkbox" name="docs" value="Design Basis"><span>Design Basis</span></label>
+        <label><input type="checkbox" name="docs" value="Specifications"><span>Specifications</span></label>
+        <label><input type="checkbox" name="docs" value="Drawings"><span>Drawings</span></label>
+        <label><input type="checkbox" name="docs" value="Equipment lists"><span>Equipment lists</span></label>
+        <label><input type="checkbox" name="docs" value="Standards"><span>Standards</span></label>
+      </fieldset>
+      <label class="f"><span>What should we know? <em>optional</em></span><textarea name="message" rows="4"></textarea></label>
+      <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="f-foot">
+        <button class="btn" type="submit">Request a pilot <span aria-hidden="true">→</span></button>
+        <p class="f-msg" data-form-msg role="status"></p>
+      </div>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="ftr">
+  <div class="wrap ftr-in">
+    <div class="ftr-brand">
+      <svg class="ftr-logo" viewBox="0 0 790.89 148" aria-label="Bravo"><use href="#logo-h"/></svg>
+      <p>BravoDoc — turning document checking into intelligent automation.</p>
+    </div>
+    <div class="ftr-meta">
+      <p>© <span data-year>2026</span> Bravo Integrated Solutions</p>
+      <p>Files in the demo never leave your browser. This site sets no cookies.</p>
+      <button class="stamp mono" type="button" data-stamp title="Document number">BD-WEB-001 · Rev 1</button>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" data-toast role="status" hidden></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="emblem" viewBox="0 0 360 338.58"><path d="M180 0L360 72.23 180 144.46 0 72.23z"/><path opacity=".45" d="M0 266.35V72.23l180 72.23v194.12z"/><path d="M360 169.29l-58.5-23.7L180 194.12 58.5 145.59 0 169.29l180 72.23z"/><path d="M360 266.35l-58.5-23.7L180 291.18 58.5 242.65 0 266.35l180 72.23z"/></symbol>
+  <symbol id="logo-h" viewBox="0 0 790.89 148"><path d="M80.00 0.00L160.00 31.57L80.00 63.15L0.00 31.57L80.00 0.00"/><path opacity=".45" d="M0.00 116.43L0.00 31.57L80.00 63.15L80.00 148.00L0.00 116.43"/><path d="M160.00 74.00L134.00 63.64L80.00 84.85L26.00 63.64L0.00 74.00L80.00 105.57L160.00 74.00"/><path d="M160.00 116.43L134.00 106.07L80.00 127.28L26.00 106.07L0.00 116.43L80.00 148.00L160.00 116.43"/><path d="M208.00 130.76L208.00 17.24L269.00 17.24C280.72 17.24 289.88 19.95 296.50 25.35C303.11 30.76 306.42 37.51 306.42 45.62C306.42 53.73 303.44 60.11 297.47 64.76C294.65 66.70 291.67 68.16 288.53 69.14L288.53 69.95C292.65 71.14 296.28 72.81 299.42 74.97C306.80 80.05 310.49 87.57 310.49 97.51C310.49 107.24 306.75 115.24 299.26 121.51C291.78 127.68 281.15 130.76 267.38 130.76L208.00 130.76M208.00 59.24C208.00 59.24 239.72 59.24 264.12 59.24C276.82 59.24 282.44 56.16 282.44 49.19C282.44 42.38 275.89 38.76 264.12 38.76C239.61 38.76 208.00 38.76 208.00 38.76L208.00 59.24M238.10 106.43L264.12 106.43C269.22 106.43 273.07 105.41 275.67 103.35C278.28 101.30 279.58 98.54 279.58 95.08C279.58 91.62 278.28 88.86 275.67 86.81C273.07 84.76 269.22 83.73 264.12 83.73L238.10 83.73L238.10 106.43"/><path d="M323.61 130.76L323.61 17.24L380.99 17.24C394.65 17.24 405.69 21.08 414.11 28.76C422.63 36.32 426.90 45.73 426.90 56.97C426.90 71.57 419.25 82.92 403.94 91.03L427.72 130.76L394.93 130.76L374.43 96.70L353.94 96.70L353.94 130.76L323.61 130.76M353.94 69.14L380.17 69.14C384.87 69.14 388.64 67.95 391.48 65.57C394.33 63.19 395.75 60.32 395.75 56.97C395.75 53.62 394.33 50.76 391.48 48.38C388.64 46.00 384.87 44.81 380.17 44.81L353.94 44.81L353.94 69.14"/><path d="M433.51 130.76L464.66 17.24L520.41 17.24L551.56 130.76L520.41 130.76L514.67 108.05L470.40 108.05L464.66 130.76L433.51 130.76M476.96 82.11L508.11 82.11L498.27 44.81L486.80 44.81L476.96 82.11"/><path d="M544.09 17.24L575.24 17.24L596.56 103.19L607.21 103.19L628.53 17.24L659.68 17.24L630.17 130.76L573.60 130.76L544.09 17.24"/><path d="M681.04 116.49C669.02 104.70 663.01 90.54 663.01 74.00C663.01 57.46 669.02 43.35 681.04 31.68C693.17 19.89 708.48 14.00 726.95 14.00C745.42 14.00 760.67 19.89 772.69 31.68C784.82 43.35 790.89 57.46 790.89 74.00C790.89 90.54 784.82 104.70 772.69 116.49C760.67 128.16 745.42 134.00 726.95 134.00C708.48 134.00 693.17 128.16 681.04 116.49M703.83 50.49C697.93 56.43 694.98 64.27 694.98 74.00C694.98 83.73 697.93 91.57 703.83 97.51C709.73 103.46 717.44 106.43 726.95 106.43C736.46 106.43 744.16 103.46 750.07 97.51C755.97 91.57 758.92 83.73 758.92 74.00C758.92 64.27 755.97 56.43 750.07 50.49C744.16 44.54 736.46 41.57 726.95 41.57C717.44 41.57 709.73 44.54 703.83 50.49"/></symbol>
+</svg>
+
+<script src="js/main.js" type="module"></script>
+</body>
+</html>
