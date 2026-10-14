@@ -4,6 +4,11 @@
   "type": "module",
   "scripts": {
     "test": "node tests/engine.test.mjs",
-    "serve": "python3 -m http.server 8090"
+    "serve": "python3 -m http.server 8090",
+    "build": "python3 build.py",
+    "render": "node tools/render.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.48.0"
   }
 }

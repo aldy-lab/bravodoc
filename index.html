@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-page="home">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -8,8 +8,9 @@
 <meta name="theme-color" content="#06080b">
 <link rel="canonical" href="https://aldy-lab.github.io/bravodoc/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="BravoDoc — AI document validator">
-<meta property="og:description" content="Finds missing references, outdated revisions and conflicting values across engineering documents. Smart validation. Confident compliance.">
+<meta property="og:site_name" content="BravoDoc">
+<meta property="og:title" content="BravoDoc — AI document validator for engineering projects">
+<meta property="og:description" content="BravoDoc reads engineering documents, compares them and flags missing references, outdated revisions and conflicting values in seconds. Try it on your own files — they never leave your browser.">
 <meta property="og:url" content="https://aldy-lab.github.io/bravodoc/">
 <meta property="og:image" content="https://aldy-lab.github.io/bravodoc/assets/og.jpg">
 <meta property="og:image:width" content="1200">
@@ -18,27 +19,24 @@
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/style.css">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"BravoDoc","applicationCategory":"BusinessApplication","operatingSystem":"Web","description":"AI document validator for engineering projects: checks references, revisions, standards, quantities and design values across a document package.","url":"https://aldy-lab.github.io/bravodoc/","publisher":{"@type":"Organization","name":"Bravo Integrated Solutions"}}
-</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "name": "Bravo Integrated Solutions", "url": "https://aldy-lab.github.io/bravodoc/"}, {"@type": "SoftwareApplication", "name": "BravoDoc", "applicationCategory": "BusinessApplication", "operatingSystem": "Web", "url": "https://aldy-lab.github.io/bravodoc/", "publisher": {"@type": "Organization", "name": "Bravo Integrated Solutions", "url": "https://aldy-lab.github.io/bravodoc/"}, "description": "AI document validator for engineering projects: checks references, revisions, standards, quantities and design values across a document package."}]}</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-
 <header class="hdr" data-hdr>
   <div class="hdr-in wrap">
-    <a class="brand" href="#top" aria-label="BravoDoc, back to top">
+    <a class="brand" href="./" aria-label="BravoDoc home">
       <svg class="brand-mark" viewBox="0 0 360 338.58" aria-hidden="true"><use href="#emblem"/></svg>
       <span class="brand-name">BravoDoc</span>
     </a>
-    <nav class="nav" aria-label="Sections">
-      <a href="#problem">Problem</a>
-      <a href="#demo">Live demo</a>
-      <a href="#how">How it works</a>
-      <a href="#roadmap">Roadmap</a>
-      <a href="#partner">Partner</a>
+    <nav class="nav" aria-label="Main">
+      <a href="./#demo" data-spy="demo">Live demo</a>
+      <a href="./#how" data-spy="how">How it works</a>
+      <a href="./#cost" data-spy="cost">Cost</a>
+      <a href="./#faq" data-spy="faq">FAQ</a>
+      <a href="investors.html" data-nav="investors">Investors</a>
     </nav>
-    <a class="btn btn-s" href="#contact">Request a pilot</a>
+    <a class="btn btn-s" href="./#contact">Request a pilot</a>
   </div>
 </header>
 
@@ -58,6 +56,7 @@
       <ul class="checks reveal" aria-label="What it checks">
         <li>References</li><li>Revisions</li><li>Standards</li><li>Quantities</li><li>Design values</li>
       </ul>
+      <p class="aud reveal">Investor? <a href="investors.html">Read the overview <span aria-hidden="true">→</span></a></p>
     </div>
 
     <figure class="sheets" aria-label="Three documents being compared: the validator finds an outdated revision, a quantity mismatch and a conflicting rating" data-sheets>
@@ -146,7 +145,7 @@
 <section class="sec" id="problem">
   <div class="wrap">
     <div class="sec-head">
-      <p class="label reveal">01 — The problem</p>
+      <p class="label reveal">The problem</p>
       <h2 class="h2 reveal">Manual checks waste time and <span class="err-word">cause errors.</span></h2>
       <p class="sub reveal">Engineering teams work with thousands of files — Design Bases, specifications, drawings, standards. Checking them by hand is slow and inconsistent, and what slips through comes back as rework, compliance risk and lost time.</p>
     </div>
@@ -170,6 +169,18 @@
         <span class="card-n">on site</span>
       </article>
     </div>
+    <div class="proof">
+      <figure class="proof-i reveal">
+        <p class="proof-n"><span data-count="21">21</span>%</p>
+        <figcaption>of project cost goes on avoidable error, on average, in UK construction. Poor and late design information is among the leading causes.
+          <cite><a href="https://www.designingbuildings.co.uk/wiki/The_Get_It_Right_Initiative" rel="noopener" target="_blank">Get It Right Initiative, research 2015–16</a></cite></figcaption>
+      </figure>
+      <figure class="proof-i reveal">
+        <p class="proof-n"><span data-count="56">56</span>%</p>
+        <figcaption>of engineers’ working time is spent finding, receiving and handling information, rather than on the engineering it feeds.
+          <cite><a href="https://ideas.repec.org/a/bla/jamist/v61y2010i4p640-658.html" rel="noopener" target="_blank">Robinson, J. Am. Soc. Inf. Sci. Technol., 2010</a></cite></figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
@@ -177,7 +188,7 @@
 <section class="sec sec-tight" id="what">
   <div class="wrap">
     <div class="sec-head">
-      <p class="label reveal">02 — The answer</p>
+      <p class="label reveal">The answer</p>
       <h2 class="h2 reveal">AI that understands <span class="grad">engineering documents.</span></h2>
     </div>
     <ol class="flow">
@@ -190,12 +201,44 @@
   </div>
 </section>
 
+<!-- WHO -->
+<section class="sec sec-tight" id="who">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="label reveal">Who it is for</p>
+      <h2 class="h2 reveal">For the people who sign the package off.</h2>
+    </div>
+    <ul class="roles">
+      <li class="role reveal">
+        <p class="role-k mono">Engineering managers</p>
+        <h3>Know the package agrees with itself before it goes out.</h3>
+        <p>One report across every document, instead of trusting that each reviewer caught what crossed into another discipline.</p>
+      </li>
+      <li class="role reveal">
+        <p class="role-k mono">Document controllers</p>
+        <h3>Catch outdated revisions and missing references at issue.</h3>
+        <p>Every cited document is matched to the set and its current revision — the check that is easiest to skip by hand.</p>
+      </li>
+      <li class="role reveal">
+        <p class="role-k mono">QA and compliance</p>
+        <h3>Evidence that the documents were cross-checked.</h3>
+        <p>A report that lists what was compared, what disagreed and where, kept with the package.</p>
+      </li>
+      <li class="role reveal">
+        <p class="role-k mono">EPC contractors and owners</p>
+        <h3>Find the conflict on paper, not on site.</h3>
+        <p>A rating that differs between the Design Basis and the specification costs an email now, and a change order later.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
 <!-- DEMO -->
 <section class="sec demo-sec" id="demo">
   <div class="wrap">
     <div class="sec-head sec-head-row">
       <div>
-        <p class="label reveal">03 — Live demo</p>
+        <p class="label reveal">Live demo</p>
         <h2 class="h2 reveal">Try it on your documents.</h2>
       </div>
       <p class="sub reveal">Drop a few PDFs or Word files from one project. The checks run in your browser — <strong>nothing is uploaded</strong>. No documents at hand? Run the sample package.</p>
@@ -252,7 +295,7 @@
 <section class="sec" id="how">
   <div class="wrap">
     <div class="sec-head">
-      <p class="label reveal">04 — How it works</p>
+      <p class="label reveal">How it works</p>
       <h2 class="h2 reveal">Four steps, from a folder of files to a <span class="grad">validation report.</span></h2>
     </div>
     <ol class="steps" data-steps>
@@ -265,11 +308,45 @@
   </div>
 </section>
 
+<!-- COST -->
+<section class="sec sec-tight" id="cost">
+  <div class="wrap">
+    <div class="sec-head sec-head-row">
+      <div>
+        <p class="label reveal">Cost</p>
+        <h2 class="h2 reveal">What cross-checking by hand costs you today.</h2>
+      </div>
+      <p class="sub reveal">Put in your own numbers. This is the cost of the check as it is done now — the pilot measures how much of it BravoDoc takes off, on your documents.</p>
+    </div>
+    <div class="calc reveal" data-calc>
+      <div class="calc-in">
+        <label class="rng"><span class="rng-l">Documents in a package</span><output data-out="docs">300</output>
+          <input type="range" name="docs" min="20" max="3000" step="10" value="300"></label>
+        <label class="rng"><span class="rng-l">Minutes to cross-check one document by hand</span><output data-out="mins">40</output>
+          <input type="range" name="mins" min="5" max="180" step="5" value="40"></label>
+        <label class="rng"><span class="rng-l">Times the package is checked (revisions)</span><output data-out="rounds">3</output>
+          <input type="range" name="rounds" min="1" max="10" step="1" value="3"></label>
+        <label class="rng"><span class="rng-l">Engineer cost per hour, €</span><output data-out="rate">65</output>
+          <input type="range" name="rate" min="20" max="200" step="5" value="65"></label>
+      </div>
+      <div class="calc-out" aria-live="polite">
+        <p class="calc-k">Engineer hours per package</p>
+        <p class="calc-n mono" data-res="hours">600</p>
+        <p class="calc-k">Cost per package</p>
+        <p class="calc-n calc-n-big mono" data-res="cost">€39,000</p>
+        <p class="calc-k">That is</p>
+        <p class="calc-w" data-res="weeks">15 working weeks of one engineer</p>
+        <a class="btn btn-s" href="#contact" data-calc-cta>Measure it in a pilot <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CAPABILITIES -->
 <section class="sec sec-panel" id="capabilities">
   <div class="wrap">
     <div class="sec-head">
-      <p class="label reveal">05 — The product</p>
+      <p class="label reveal">The product</p>
       <h2 class="h2 reveal">Working prototype, <span class="hl">ready to grow.</span></h2>
     </div>
     <div class="cap-grid">
@@ -299,7 +376,7 @@
 <section class="sec sec-tight" id="stack">
   <div class="wrap">
     <div class="sec-head">
-      <p class="label reveal">06 — Under the hood</p>
+      <p class="label reveal">Under the hood</p>
       <h2 class="h2 reveal">Built on modern, scalable tools.</h2>
     </div>
     <div class="cards4">
@@ -311,11 +388,27 @@
   </div>
 </section>
 
+<!-- SECURITY -->
+<section class="sec sec-tight" id="security">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="label reveal">Your documents</p>
+      <h2 class="h2 reveal">Engineering documents are confidential. We treat them that way.</h2>
+    </div>
+    <ul class="sec-list">
+      <li class="reveal"><span class="sec-k mono">Demo</span><h3>Nothing leaves your computer.</h3><p>The demo on this page reads files in your browser. There is no upload, no server and no copy — close the tab and they are gone.</p></li>
+      <li class="reveal"><span class="sec-k mono">Pilot</span><h3>Deployment agreed with you.</h3><p>BravoDoc is built cloud-ready for AWS and Azure. Where it runs for your pilot, and who can see the documents, is set before any file is shared.</p></li>
+      <li class="reveal"><span class="sec-k mono">Fit</span><h3>Tailored to your documents.</h3><p>A version tuned to your numbering, your document types and the standards you work to — not a generic checker.</p></li>
+      <li class="reveal"><span class="sec-k mono">IP</span><h3>Shared IP or exclusive use.</h3><p>For a co-development partner the model is open: a shared result, or a version for your use only.</p></li>
+    </ul>
+  </div>
+</section>
+
 <!-- ROADMAP -->
 <section class="sec" id="roadmap">
   <div class="wrap">
     <div class="sec-head">
-      <p class="label reveal">07 — Roadmap</p>
+      <p class="label reveal">Roadmap</p>
       <h2 class="h2 reveal">From prototype to <span class="grad">full product.</span></h2>
     </div>
     <ol class="road" data-road>
@@ -342,7 +435,7 @@
   <div class="wrap">
     <div class="sec-head sec-head-row">
       <div>
-        <p class="label reveal">08 — Partnership</p>
+        <p class="label reveal">Partnership</p>
         <h2 class="h2 reveal">Let’s develop BravoDoc together.</h2>
       </div>
       <p class="sub reveal">We are looking for an engineering partner to take BravoDoc into production — on your documents, against your standards.</p>
@@ -362,13 +455,54 @@
   </div>
 </section>
 
+<!-- FAQ -->
+<section class="sec sec-tight" id="faq">
+  <div class="wrap faq-in">
+    <div class="sec-head">
+      <p class="label reveal">FAQ</p>
+      <h2 class="h2 reveal">Questions engineering teams ask first.</h2>
+    </div>
+    <div class="faq">
+      <details class="faq-q reveal">
+        <summary>Does BravoDoc replace the engineer’s review?</summary>
+        <p>No. It reads every document against every other one and lists what does not agree, with the line it found it on. An engineer decides what each finding means. The time it saves is the searching and comparing, not the judgement.</p>
+      </details>
+      <details class="faq-q reveal">
+        <summary>Which file formats does it read?</summary>
+        <p>PDF and Word today, which is what the demo on this page uses. Scanned PDFs and drawings (DWG, DXF) need OCR, which is in development and part of the pilot.</p>
+      </details>
+      <details class="faq-q reveal">
+        <summary>Which standards does it check against?</summary>
+        <p>Today it checks that every standard is cited in the same edition across the package — IEC, EN, ISO, DIN and others, by number. Checking content against your own standards and limits, as custom rules, is the next step on the roadmap.</p>
+      </details>
+      <details class="faq-q reveal">
+        <summary>Where do our documents go?</summary>
+        <p>In the demo, nowhere: files are read in your browser. In a pilot, where it runs and who can see the documents is agreed with you before any file is shared. It is built cloud-ready for AWS and Azure.</p>
+      </details>
+      <details class="faq-q reveal">
+        <summary>What does a pilot involve?</summary>
+        <p>You choose a real document package. We tune the checks to your numbering and standards, run them, and go through the findings with your engineers. You see what it catches on your own work before any wider rollout.</p>
+      </details>
+      <details class="faq-q reveal">
+        <summary>What does it cost?</summary>
+        <p>A pilot is scoped with you, depending on the package and the rules it needs. Ask for a proposal through the form below.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section class="sec contact" id="contact">
   <div class="wrap contact-in">
     <div class="contact-copy">
-      <p class="label reveal">09 — Next step</p>
+      <p class="label reveal">Next step</p>
       <h2 class="h2 reveal">Join us in building the future of <span class="grad">document intelligence.</span></h2>
       <p class="sub reveal">BravoDoc is ready for the next stage. Tell us about your documents and we will propose a pilot or a co-development plan.</p>
+      <ol class="next">
+        <li><span class="mono">1</span>You send the form — it takes a minute.</li>
+        <li><span class="mono">2</span>We reply and agree a short call about your documents.</li>
+        <li><span class="mono">3</span>You get a pilot proposal: scope, package and timing.</li>
+      </ol>
       <div class="person reveal" data-contact-block>
         <p class="person-name" data-cfg="contactName"></p>
         <a class="person-l" data-cfg="email" data-subject="BravoDoc pilot"></a>
@@ -382,7 +516,14 @@
         <label class="f"><span>Company</span><input name="company" autocomplete="organization" required></label>
       </div>
       <label class="f"><span>Work email</span><input name="email" type="email" autocomplete="email" required></label>
-      <fieldset class="f f-chips">
+      <fieldset class="f f-chips f-intent">
+        <legend>I am interested in</legend>
+        <label><input type="radio" name="intent" value="A pilot" checked><span>A pilot</span></label>
+        <label><input type="radio" name="intent" value="Co-development"><span>Co-development</span></label>
+        <label><input type="radio" name="intent" value="Investing"><span>Investing</span></label>
+        <label><input type="radio" name="intent" value="Something else"><span>Something else</span></label>
+      </fieldset>
+      <fieldset class="f f-chips" data-docs-field>
         <legend>Documents you would check</legend>
         <label><input type="checkbox" name="docs" value="Design Basis"><span>Design Basis</span></label>
         <label><input type="checkbox" name="docs" value="Specifications"><span>Specifications</span></label>
@@ -393,7 +534,7 @@
       <label class="f"><span>What should we know? <em>optional</em></span><textarea name="message" rows="4"></textarea></label>
       <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="f-foot">
-        <button class="btn" type="submit">Request a pilot <span aria-hidden="true">→</span></button>
+        <button class="btn" type="submit"><span data-submit-t>Request a pilot</span> <span aria-hidden="true">→</span></button>
         <p class="f-msg" data-form-msg role="status"></p>
       </div>
     </form>
@@ -401,23 +542,36 @@
 </section>
 
 </main>
-
 <footer class="ftr">
   <div class="wrap ftr-in">
     <div class="ftr-brand">
       <svg class="ftr-logo" viewBox="0 0 790.89 148" aria-label="Bravo"><use href="#logo-h"/></svg>
       <p>BravoDoc — turning document checking into intelligent automation.</p>
     </div>
+    <nav class="ftr-nav" aria-label="Product">
+      <p class="ftr-h">Product</p>
+      <a href="./#demo">Live demo</a>
+      <a href="./#how">How it works</a>
+      <a href="./#security">Your documents</a>
+      <a href="./#faq">FAQ</a>
+    </nav>
+    <nav class="ftr-nav" aria-label="Company">
+      <p class="ftr-h">Company</p>
+      <a href="investors.html">Investors</a>
+      <a href="./#contact">Request a pilot</a>
+      <a data-cfg="email" data-subject="BravoDoc">Email</a>
+      <a data-cfg="linkedin">LinkedIn</a>
+      <a href="privacy.html">Privacy</a>
+    </nav>
     <div class="ftr-meta">
       <p>© <span data-year>2026</span> Bravo Integrated Solutions</p>
       <p>Files in the demo never leave your browser. This site sets no cookies.</p>
-      <button class="stamp mono" type="button" data-stamp title="Document number">BD-WEB-001 · Rev 1</button>
+      <button class="stamp mono" type="button" data-stamp title="Document number">BD-WEB-001 · Rev 2</button>
     </div>
   </div>
 </footer>
 
 <div class="toast" data-toast role="status" hidden></div>
-
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="emblem" viewBox="0 0 360 338.58"><path d="M180 0L360 72.23 180 144.46 0 72.23z"/><path opacity=".45" d="M0 266.35V72.23l180 72.23v194.12z"/><path d="M360 169.29l-58.5-23.7L180 194.12 58.5 145.59 0 169.29l180 72.23z"/><path d="M360 266.35l-58.5-23.7L180 291.18 58.5 242.65 0 266.35l180 72.23z"/></symbol>
   <symbol id="logo-h" viewBox="0 0 790.89 148"><path d="M80.00 0.00L160.00 31.57L80.00 63.15L0.00 31.57L80.00 0.00"/><path opacity=".45" d="M0.00 116.43L0.00 31.57L80.00 63.15L80.00 148.00L0.00 116.43"/><path d="M160.00 74.00L134.00 63.64L80.00 84.85L26.00 63.64L0.00 74.00L80.00 105.57L160.00 74.00"/><path d="M160.00 116.43L134.00 106.07L80.00 127.28L26.00 106.07L0.00 116.43L80.00 148.00L160.00 116.43"/><path d="M208.00 130.76L208.00 17.24L269.00 17.24C280.72 17.24 289.88 19.95 296.50 25.35C303.11 30.76 306.42 37.51 306.42 45.62C306.42 53.73 303.44 60.11 297.47 64.76C294.65 66.70 291.67 68.16 288.53 69.14L288.53 69.95C292.65 71.14 296.28 72.81 299.42 74.97C306.80 80.05 310.49 87.57 310.49 97.51C310.49 107.24 306.75 115.24 299.26 121.51C291.78 127.68 281.15 130.76 267.38 130.76L208.00 130.76M208.00 59.24C208.00 59.24 239.72 59.24 264.12 59.24C276.82 59.24 282.44 56.16 282.44 49.19C282.44 42.38 275.89 38.76 264.12 38.76C239.61 38.76 208.00 38.76 208.00 38.76L208.00 59.24M238.10 106.43L264.12 106.43C269.22 106.43 273.07 105.41 275.67 103.35C278.28 101.30 279.58 98.54 279.58 95.08C279.58 91.62 278.28 88.86 275.67 86.81C273.07 84.76 269.22 83.73 264.12 83.73L238.10 83.73L238.10 106.43"/><path d="M323.61 130.76L323.61 17.24L380.99 17.24C394.65 17.24 405.69 21.08 414.11 28.76C422.63 36.32 426.90 45.73 426.90 56.97C426.90 71.57 419.25 82.92 403.94 91.03L427.72 130.76L394.93 130.76L374.43 96.70L353.94 96.70L353.94 130.76L323.61 130.76M353.94 69.14L380.17 69.14C384.87 69.14 388.64 67.95 391.48 65.57C394.33 63.19 395.75 60.32 395.75 56.97C395.75 53.62 394.33 50.76 391.48 48.38C388.64 46.00 384.87 44.81 380.17 44.81L353.94 44.81L353.94 69.14"/><path d="M433.51 130.76L464.66 17.24L520.41 17.24L551.56 130.76L520.41 130.76L514.67 108.05L470.40 108.05L464.66 130.76L433.51 130.76M476.96 82.11L508.11 82.11L498.27 44.81L486.80 44.81L476.96 82.11"/><path d="M544.09 17.24L575.24 17.24L596.56 103.19L607.21 103.19L628.53 17.24L659.68 17.24L630.17 130.76L573.60 130.76L544.09 17.24"/><path d="M681.04 116.49C669.02 104.70 663.01 90.54 663.01 74.00C663.01 57.46 669.02 43.35 681.04 31.68C693.17 19.89 708.48 14.00 726.95 14.00C745.42 14.00 760.67 19.89 772.69 31.68C784.82 43.35 790.89 57.46 790.89 74.00C790.89 90.54 784.82 104.70 772.69 116.49C760.67 128.16 745.42 134.00 726.95 134.00C708.48 134.00 693.17 128.16 681.04 116.49M703.83 50.49C697.93 56.43 694.98 64.27 694.98 74.00C694.98 83.73 697.93 91.57 703.83 97.51C709.73 103.46 717.44 106.43 726.95 106.43C736.46 106.43 744.16 103.46 750.07 97.51C755.97 91.57 758.92 83.73 758.92 74.00C758.92 64.27 755.97 56.43 750.07 50.49C744.16 44.54 736.46 41.57 726.95 41.57C717.44 41.57 709.73 44.54 703.83 50.49"/></symbol>

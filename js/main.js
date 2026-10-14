@@ -7,7 +7,20 @@ const CONFIG = {
   contactName: "Andy Fayngold",              // from the deck, slide 14
   email: "bravointegrated@gmail.com",        // deck contact; pilot requests fall back to a prefilled email
   phone: "+420 608 141 908",                 // deck contact
+  linkedin: "",                              // company page URL
+  booking: "",                               // e.g. a Calendly link — the investor page's "Book 30 minutes" card
   formEndpoint: "",                          // e.g. "https://formspree.io/f/xxxxxxxx" — POSTs JSON instead of opening email
+  plausibleDomain: "",                       // e.g. "bravodoc.eu" — cookieless analytics; update privacy.html when you switch it on
+
+  /* The investor page. Every field is the client's to confirm; a blank
+     field or an empty list removes its block, so nothing is guessed. */
+  investor: {
+    ask: "",                                 // e.g. "€400k"
+    instrument: "",                          // e.g. "pre-seed, SAFE"
+    traction: [],                            // e.g. ["Pilot agreed with <company>", "LOI from <company>"]
+    useOfFunds: [],                          // e.g. [{ label: "Product: OCR and custom rules", share: 50 }, ...]
+    team: [],                                // e.g. [{ name: "Andy Fayngold", role: "Founder", line: "…" }]
+  },
 };
 
 import { analyse, reportText } from "./engine.js";
@@ -29,10 +42,39 @@ $$("[data-cfg]").forEach((el) => {
   const key = el.dataset.cfg;
   const val = (CONFIG[key] || "").trim();
   if (!val) { el.remove(); return; }
-  if (key === "email") { el.href = mailto(val, el.dataset.subject); el.textContent = val; }
+  if (key === "email") { el.href = mailto(val, el.dataset.subject); if (!el.textContent.trim()) el.textContent = val; }
   else if (key === "phone") { el.href = "tel:" + val.replace(/[^\d+]/g, ""); el.textContent = val; }
+  else if (el.tagName === "A") { el.href = val; el.rel = "noopener"; el.target = "_blank"; }
   else el.textContent = val;
 });
+
+/* ---------- investor page: blank fields and empty lists remove their blocks ---------- */
+(function investor() {
+  const inv = CONFIG.investor || {};
+  $$("[data-inv]").forEach((el) => {
+    const v = (inv[el.dataset.inv] || "").trim();
+    if (v) el.textContent = el.classList.contains("snap-s") ? " · " + v : v; else el.remove();
+  });
+  $$("[data-inv-wrap]").forEach((el) => { if (!(inv[el.dataset.invWrap] || "").trim()) el.remove(); });
+  $$("[data-inv-section]").forEach((sec) => {
+    const list = (inv[sec.dataset.invSection] || []).filter(Boolean);
+    if (!list.length) { sec.remove(); return; }
+    const ul = $("[data-inv-list]", sec);
+    const kind = sec.dataset.invSection;
+    ul.innerHTML = list.map((x, i) => {
+      if (kind === "useOfFunds") return `<li class="reveal is-in"><span class="fund-bar" style="--w:${Number(x.share) || 0}%"></span><span class="fund-l">${esc(x.label)}</span><span class="fund-n mono">${esc(x.share)}%</span></li>`;
+      if (kind === "team") return `<li class="reveal is-in"><h3>${esc(x.name)}</h3><p class="mono">${esc(x.role || "")}</p>${x.line ? `<p>${esc(x.line)}</p>` : ""}</li>`;
+      return `<li class="reveal is-in"><span class="mono">${String(i + 1).padStart(2, "0")}</span>${esc(x)}</li>`;
+    }).join("");
+  });
+})();
+
+/* ---------- analytics: off until a domain is set ---------- */
+if (CONFIG.plausibleDomain.trim()) {
+  const sc = document.createElement("script");
+  sc.defer = true; sc.dataset.domain = CONFIG.plausibleDomain.trim(); sc.src = "https://plausible.io/js/script.js";
+  document.head.append(sc);
+}
 $$("[data-contact-block]").forEach((b) => { if (!b.children.length) b.remove(); });
 $$("[data-year]").forEach((el) => (el.textContent = new Date().getFullYear()));
 
@@ -46,19 +88,24 @@ $$(".reveal").forEach((el) => {
   if (i) el.style.setProperty("--d", Math.min(i * 0.07, 0.42) + "s");
 });
 const io = new IntersectionObserver(
-  (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); } }),
+  (entries) => entries.forEach((e) => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add("is-in");
+    $$("[data-count]", e.target).forEach((c) => countTo(c, Number(c.dataset.count), 1100));
+    io.unobserve(e.target);
+  }),
   { rootMargin: "0px 0px -8% 0px", threshold: 0.01 }
 );
 $$(".reveal, [data-road]").forEach((el) => io.observe(el));
 
 /* ---------- header: solid after the hero starts to scroll; scroll-spy ---------- */
 const hdr = $("[data-hdr]");
-const navLinks = $$(".nav a");
+const navLinks = $$(".nav a[data-spy]");
 const onScrollHeader = () => hdr.classList.toggle("is-solid", scrollY > 24);
 const spy = new IntersectionObserver(
   (entries) => entries.forEach((e) => {
     if (!e.isIntersecting) return;
-    navLinks.forEach((a) => a.classList.toggle("is-on", a.getAttribute("href") === "#" + e.target.id));
+    navLinks.forEach((a) => a.classList.toggle("is-on", a.dataset.spy === e.target.id));
   }),
   { rootMargin: "-45% 0px -50% 0px" }
 );
@@ -66,16 +113,17 @@ $$("main > section[id]").forEach((s) => spy.observe(s));
 
 /* ---------- how-it-works: the line fills as you read down ---------- */
 const steps = $("[data-steps]");
-const stepItems = $$(".step", steps);
+const stepItems = steps ? $$(".step", steps) : [];
 const fill = $("[data-steps-fill]");
 function onScrollSteps() {
+  if (!steps) return;
   const r = steps.getBoundingClientRect();
   const vh = innerHeight;
   const p = Math.min(1, Math.max(0, (vh * 0.7 - r.top) / (r.height || 1)));
   fill.parentElement.style.setProperty("--p", p.toFixed(3));
   stepItems.forEach((s) => s.classList.toggle("is-in", s.getBoundingClientRect().top < vh * 0.72));
 }
-if (reduced) { stepItems.forEach((s) => s.classList.add("is-in")); fill.parentElement.style.setProperty("--p", 1); }
+if (reduced && steps) { stepItems.forEach((s) => s.classList.add("is-in")); fill.parentElement.style.setProperty("--p", 1); }
 
 let ticking = false;
 addEventListener("scroll", () => {
@@ -327,11 +375,56 @@ function countTo(el, n, ms = 700) {
   });
 })();
 
+/* ---------- cost of the manual check ---------- */
+(function calc() {
+  const box = $("[data-calc]");
+  if (!box) return;
+  const eur = new Intl.NumberFormat("en-IE", { style: "currency", currency: "EUR", maximumFractionDigits: 0 });
+  const num = new Intl.NumberFormat("en-IE");
+  const inputs = $$("input[type=range]", box);
+  const out = (k) => $(`[data-res="${k}"]`, box);
+  function update() {
+    const v = Object.fromEntries(inputs.map((i) => [i.name, Number(i.value)]));
+    inputs.forEach((i) => {
+      $(`[data-out="${i.name}"]`, box).textContent = num.format(i.value);
+      i.style.setProperty("--fill", ((i.value - i.min) / (i.max - i.min)) * 100 + "%");
+    });
+    const hours = (v.docs * v.mins * v.rounds) / 60;
+    out("hours").textContent = num.format(Math.round(hours));
+    out("cost").textContent = eur.format(Math.round(hours * v.rate / 100) * 100);
+    const weeks = hours / 40;
+    out("weeks").textContent = weeks < 1
+      ? `${Math.round(hours)} hours of one engineer`
+      : `${weeks < 10 ? weeks.toFixed(1).replace(/\.0$/, "") : Math.round(weeks)} working weeks of one engineer`;
+    box.dataset.summary = `${num.format(v.docs)} documents, ${v.mins} min each, checked ${v.rounds}× — about ${num.format(Math.round(hours))} engineer hours per package`;
+  }
+  inputs.forEach((i) => i.addEventListener("input", update));
+  update();
+  // Carry the estimate into the form, so the first email already has the numbers.
+  $("[data-calc-cta]", box).addEventListener("click", () => {
+    const m = $("[data-form] [name=message]");
+    if (m && !m.value.trim()) m.value = "Our estimate: " + box.dataset.summary + ".";
+  });
+})();
+
 /* ---------- pilot request form ---------- */
 (function form() {
   const f = $("[data-form]");
   if (!f) return;
   const msg = $("[data-form-msg]", f);
+  const submitT = $("[data-submit-t]", f);
+  const docsField = $("[data-docs-field]", f);
+  const LABEL = { "A pilot": "Request a pilot", "Co-development": "Propose co-development", "Investing": "Contact the team", "Something else": "Send" };
+  const syncIntent = () => {
+    const v = (f.querySelector('input[name="intent"]:checked') || {}).value || "A pilot";
+    submitT.textContent = LABEL[v] || "Send";
+    docsField.hidden = v === "Investing";
+    f.elements.company.previousElementSibling.textContent = v === "Investing" ? "Fund or company" : "Company";
+  };
+  const want = new URLSearchParams(location.search).get("intent");
+  if (want) { const r = f.querySelector(`input[name="intent"][value="${CSS.escape(want)}"]`); if (r) r.checked = true; }
+  f.addEventListener("change", (e) => { if (e.target.name === "intent") syncIntent(); });
+  syncIntent();
   const endpoint = CONFIG.formEndpoint.trim();
   const to = CONFIG.email.trim();
   if (!endpoint && !to) { f.remove(); return; }
@@ -353,7 +446,8 @@ function countTo(el, n, ms = 700) {
       name: f.elements.name.value.trim(),
       company: f.elements.company.value.trim(),
       email: f.elements.email.value.trim(),
-      documents: $$('input[name="docs"]:checked', f).map((c) => c.value).join(", "),
+      intent: (f.querySelector('input[name="intent"]:checked') || {}).value || "",
+      documents: docsField.hidden ? "" : $$('input[name="docs"]:checked', f).map((c) => c.value).join(", "),
       message: f.elements.message.value.trim(),
     };
     if (endpoint) {
@@ -364,7 +458,7 @@ function countTo(el, n, ms = 700) {
         const res = await fetch(endpoint, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(data) });
         if (!res.ok) throw new Error(res.status);
         f.reset();
-        msg.textContent = "Thank you — we will reply within two working days.";
+        msg.textContent = "Thank you — we will reply by email.";
         msg.classList.add("is-ok");
       } catch {
         msg.innerHTML = to ? `Could not send. Please email <a href="${mailto(to, "BravoDoc pilot")}">${esc(to)}</a>.` : "Could not send. Please try again.";
@@ -373,10 +467,10 @@ function countTo(el, n, ms = 700) {
       return;
     }
     const body = [
-      `Name: ${data.name}`, `Company: ${data.company}`, `Email: ${data.email}`,
+      `Interest: ${data.intent}`, `Name: ${data.name}`, `Company: ${data.company}`, `Email: ${data.email}`,
       data.documents && `Documents: ${data.documents}`, "", data.message,
     ].filter((l) => l !== false && l !== undefined).join("\n");
-    location.href = mailto(to, `BravoDoc pilot — ${data.company}`, body);
+    location.href = mailto(to, `BravoDoc — ${data.intent.toLowerCase()} — ${data.company}`, body);
     msg.textContent = "Your email app should open with the request filled in.";
     msg.classList.add("is-ok");
   });
@@ -390,13 +484,13 @@ function countTo(el, n, ms = 700) {
   let t;
   b.addEventListener("click", () => {
     const text = $$("main section:not(.hero)").map((s) => s.innerText).join("\n");
-    const r = analyse([{ name: "this page", pages: ["Document No: BD-WEB-001 Revision: Rev 1\n" + text] }]);
+    const r = analyse([{ name: "this page", pages: ["Document No: BD-WEB-001 Revision: Rev 2\n" + text] }]);
     const n = r.stats.errors;
     b.classList.add("is-checked");
-    b.textContent = "BD-WEB-001 · Rev 1 · checked";
+    b.textContent = "BD-WEB-001 · Rev 2 · checked";
     toast.textContent = n
       ? `This page has ${n} conflict${n > 1 ? "s" : ""}. We are on it.`
-      : "BD-WEB-001 Rev 1, checked by BravoDoc: this page agrees with itself. 0 conflicts.";
+      : "BD-WEB-001 Rev 2, checked by BravoDoc: this page agrees with itself. 0 conflicts.";
     toast.hidden = false;
     clearTimeout(t);
     t = setTimeout(() => (toast.hidden = true), 4200);
